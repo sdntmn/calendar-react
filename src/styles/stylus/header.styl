@@ -1,0 +1,90 @@
+.header
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--neutral-100);
+
+
+  &__wrapper
+    max-width: 1024px;
+    margin: 52px auto 0;
+    padding: 0;
+
+
+  &__control
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 12px;
+
+  &__control-buttons
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+
+  &__main-button
+    padding: 6px 12px;
+    border: none;
+    background: var(--blue-300);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+
+    font-family: var(--font-family)
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+
+    cursor: pointer
+
+  &__input-area
+    max-width: 250px;
+    width: 100%
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+  &__input
+    background: var(--light-100)
+    border: var(--neutral-200)
+    box-shadow: inset 0px 0px 1px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    padding: 6px 6px 6px 12px;
+
+
+    &::placeholder
+      font-family: var(--font-family)
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      color: var(--neutral-200)
+
+
+  &__icon
+    mask-image: url(../../images/icons_search-large.svg)
+    background-color: var(--neutral-200)
+    width: 18px;
+    height: 18px;
+
+
+  &__iconSearch
+    width: 35px;
+
+
+
+
+
+
+
+
+
