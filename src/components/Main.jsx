@@ -1,6 +1,6 @@
 import React from "react";
 import ControlMonth from "./ControlMonth";
-import Cell from "./Cell";
+
 import Table from "./Table";
 
 const Main = () => {

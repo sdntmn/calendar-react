@@ -1,36 +1,70 @@
 import { React, useEffect } from "react";
-import { ReactComponent as ClosePopup } from "../images/icon_close.svg";
+import { ReactComponent as ClosePopup } from "./images/icons_cross-large.svg.svg";
 
 // const setActive = ({ isActive }) =>
 //   isActive ? "popup__link-activ" : "popup__link";
 
 const Popup = function ({ isPopupOpen = false, children, togglePopup }) {
-  console.log(isPopupOpen);
-  // // Закрытие по esc
-  // useEffect(() => {
-  //   const closeByEscape = (evt) => {
-  //     if (evt.key === "Escape") {
-  //       onClose();
-  //     }
-  //   };
-  //   document.addEventListener("keydown", closeByEscape);
-  //   return () => document.removeEventListener("keydown", closeByEscape);
-  // }, [onClose]);
-
   const handlePopup = () => {
     togglePopup(!isPopupOpen);
   };
 
   return (
     <div className={`popup ${isPopupOpen && "popup__is-opened"}`}>
-      <button
-        type='button'
-        className='button popup__icon-close'
-        aria-label='Settings'
-        onClick={handlePopup}>
-        <ClosePopup />
-      </button>
-      {children}
+      <div class='popup' id='popup_form_add'>
+        <div class='popup__container'>
+          <form name='popup__form'>
+            <button
+              class='popup__close'
+              type='button'
+              aria-label='Кнопка закрытия формы'></button>
+
+            <input
+              class='popup__input popup__input_value_mesto'
+              required
+              placeholder='Событие'
+              type='text'
+              name='name'
+              value=''
+            />
+            <input
+              class='popup__input popup__input_value_link'
+              required
+              placeholder='День, месяц, год'
+              type='text'
+              name='link'
+              value=''
+            />
+            <input
+              class='popup__input popup__input_value_link'
+              required
+              placeholder='Имена участников'
+              type='text'
+              name='link'
+              value=''
+            />
+            <textarea
+              class='popup__input-textarea popup__input_value_link'
+              required
+              placeholder='Описание'
+              type='text'
+              name='link'
+              value=''></textarea>
+
+            <button
+              class='controlMonth__extra-button popup_controlMonth'
+              type='button'>
+              <span class='controlMonth__button-title popup_controlMonth'>
+                Готово
+              </span>
+            </button>
+
+            <button class='controlMonth__extra-button' type='button'>
+              <span class='controlMonth__button-title'>Удалить</span>
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

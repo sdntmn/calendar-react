@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CellHeading from "./CellHeading";
 import Cell from "./Cell";
 
 const Table = () => {
@@ -91,27 +90,3 @@ const Table = () => {
 };
 
 export default Table;
-
-// {/* <table style={{ borderCollapse: "collapse" }}>
-//   {/* <thead className='cell'>
-//             <tr className='cell'>{table}</tr>
-//           </thead> */}
-
-//   <tbody style={{ borderCollapse: "collapse" }}>
-//     <tr className='cell'>
-//       <tr className='cell'>{table}</tr>
-//     </tr>
-//     <tr className='cell'>
-//       <tr className='cell'>{table}</tr>
-//     </tr>
-//     <tr className='cell'>
-//       <tr className='cell'>{table}</tr>
-//     </tr>
-//     <tr className='cell'>
-//       <tr className='cell'>{table}</tr>
-//     </tr>
-//     <tr className='cell'>
-//       <tr className='cell'>{table}</tr>
-//     </tr>
-//   </tbody>
-// </table>;
