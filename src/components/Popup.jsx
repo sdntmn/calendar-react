@@ -1,8 +1,4 @@
-import { React, useEffect } from "react";
-import { ReactComponent as ClosePopup } from "./images/icons_cross-large.svg.svg";
-
-// const setActive = ({ isActive }) =>
-//   isActive ? "popup__link-activ" : "popup__link";
+import { React } from "react";
 
 const Popup = function ({ isPopupOpen = false, children, togglePopup }) {
   const handlePopup = () => {
