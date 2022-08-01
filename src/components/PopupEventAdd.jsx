@@ -1,8 +1,10 @@
 import { React } from "react";
+import InputPopup from "./InputPopup";
 
 const PopupEventAdd = function () {
   return (
     <>
+      <InputPopup />
       <input
         className='popup__input popup__input_value_mesto'
         required
