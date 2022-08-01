@@ -1,11 +1,19 @@
 .cell
-  height: calc(100% - 16px)
   text-overflow: ellipsis;
   white-space: normal;
   overflow: hidden;
   border-bottom: 1px solid var(--dark-200);
   border-right: 1px solid var(--dark-200);
   padding: 7.5px
+
+  &_background
+    background: var(--blue-100);
+
+  &:active
+    box-shadow: 0px 0px 10px 2px var(--blue-300);
+
+  &:hover
+    background: var(--neutral-100);
 
 
   &__wrap

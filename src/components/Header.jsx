@@ -3,22 +3,22 @@ import React from "react";
 const Header = () => {
   return (
     <header className='header page__section'>
-      <div class='header__wrapper'>
-        <div class='header__control'>
-          <div class='header__control-buttons'>
-            <button type='button' class='header__main-button'>
+      <div className='header__wrapper'>
+        <div className='header__control'>
+          <div className='header__control-buttons'>
+            <button type='button' className='header__main-button'>
               Добавить
             </button>
-            <button type='button' class='header__main-button'>
+            <button type='button' className='header__main-button'>
               Обновить
             </button>
           </div>
 
-          <div class='header__input-area'>
-            <div class='header__icon'></div>
+          <div className='header__input-area'>
+            <div className='header__icon'></div>
             <input
-              type='text'
-              class='header__input'
+              type='search'
+              className='header__input'
               placeholder='Placeholder'
             />
           </div>
