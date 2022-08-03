@@ -1,50 +1,55 @@
 import { React } from "react";
+import Popup from "./Popup";
 import InputPopup from "./InputPopup";
 
-const PopupEventAdd = function () {
+import TextAreaInPopup from "./TextAreaInPopup";
+import Button from "./Button";
+
+const PopupEventAdd = function ({ isOpen, onClose }) {
+  const doingsInput = (
+    <InputPopup placeholder='Событие' type='text' name='name' />
+  );
+  const dateOfDoingsInput = (
+    <InputPopup placeholder='День, месяц, год' type='text' name='link' />
+  );
+
+  const namesParticipantsInput = (
+    <InputPopup placeholder='Имена участников' type='text' name='link' />
+  );
+
+  const textAreaInput = (
+    <TextAreaInPopup placeholder='Описание' type='text' name='description' />
+  );
+
+  const btnReady = (
+    <Button
+      className='controlMonth__extra-button popupEventAdd_controlMonth'
+      type='submit'
+      title='Готово'></Button>
+  );
+
+  const btnDelete = (
+    <Button
+      className='controlMonth__extra-button popupEventAdd_controlMonth'
+      type='submit'
+      title='Удалить'></Button>
+  );
+
   return (
-    <>
-      <InputPopup />
-      <input
-        className='popup__input popup__input_value_mesto'
-        required
-        placeholder='Событие'
-        type='text'
-        name='name'
-      />
-      <input
-        className='popup__input popup__input_value_link'
-        required
-        placeholder='День, месяц, год'
-        type='text'
-        name='link'
-      />
-      <input
-        className='popup__input popup__input_value_link'
-        required
-        placeholder='Имена участников'
-        type='text'
-        name='link'
-      />
-      <textarea
-        className='popup__input-textarea popup__input_value_link'
-        required
-        placeholder='Описание'
-        type='text'
-        name='link'></textarea>
-
-      <button
-        className='controlMonth__extra-button popup_controlMonth'
-        type='button'>
-        <span className='controlMonth__button-title popup_controlMonth'>
-          Готово
-        </span>
-      </button>
-
-      <button className='controlMonth__extra-button' type='button'>
-        <span className='controlMonth__button-title'>Удалить</span>
-      </button>
-    </>
+    <Popup
+      isOpen={isOpen}
+      onClose={onClose}
+      name='event-add'
+      idPopup='event-add'>
+      {doingsInput}
+      {dateOfDoingsInput}
+      {namesParticipantsInput}
+      {textAreaInput}
+      <div className='popupEventAdd'>
+        {btnReady}
+        {btnDelete}
+      </div>
+    </Popup>
   );
 };
 
