@@ -5,16 +5,16 @@ import InputPopup from "./InputPopup";
 import TextAreaInPopup from "./TextAreaInPopup";
 import Button from "./Button";
 
-const PopupEventAdd = function ({ isOpen, onClose }) {
+const PopupEventAdd = function ({ isOpenEventAdd, onClose }) {
   const doingsInput = (
     <InputPopup placeholder='Событие' type='text' name='name' />
   );
   const dateOfDoingsInput = (
-    <InputPopup placeholder='День, месяц, год' type='text' name='link' />
+    <InputPopup placeholder='День, месяц, год' type='date' name='date' />
   );
 
   const namesParticipantsInput = (
-    <InputPopup placeholder='Имена участников' type='text' name='link' />
+    <InputPopup placeholder='Имена участников' type='text' name='text' />
   );
 
   const textAreaInput = (
@@ -37,7 +37,7 @@ const PopupEventAdd = function ({ isOpen, onClose }) {
 
   return (
     <Popup
-      isOpen={isOpen}
+      isOpen={isOpenEventAdd}
       onClose={onClose}
       name='event-add'
       idPopup='event-add'>
