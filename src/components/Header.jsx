@@ -1,15 +1,22 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ onQuickAdd, isOpenEventAdd }) => {
   return (
     <header className='header page__section'>
       <div className='header__wrapper'>
         <div className='header__control'>
           <div className='header__control-buttons'>
-            <button type='button' className='header__main-button'>
+            <button
+              type='button'
+              className='header__main-button'
+              onClick={onQuickAdd}
+              disabled={isOpenEventAdd}>
               Добавить
             </button>
-            <button type='button' className='header__main-button'>
+            <button
+              type='button'
+              className='header__main-button'
+              disabled={isOpenEventAdd}>
               Обновить
             </button>
           </div>

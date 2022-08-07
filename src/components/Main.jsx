@@ -4,15 +4,31 @@ import ControlMonth from "./ControlMonth";
 import Table from "./Table";
 
 import PopupEventAdd from "./PopupEventAdd";
+import PopupQuickAdd from "./PopupQuickAdd";
 
-const Main = () => {
+const Main = ({
+  arrayCell,
+  isOpenEventAdd,
+  isOpenQuickAdd,
+  onEventAdd,
+  onClose,
+  month,
+  year,
+  setDate,
+  day,
+}) => {
   return (
     <main className='main page__section'>
       <div className='main__section'>
-        <ControlMonth />
-        <Table />
+        <ControlMonth month={month} year={year} setDate={setDate} day={day} />
+        <Table arrayCell={arrayCell} />
 
-        <PopupEventAdd />
+        <PopupQuickAdd
+          onClose={onClose}
+          isOpenQuickAdd={isOpenQuickAdd}
+          onEventAdd={onEventAdd}
+        />
+        <PopupEventAdd onClose={onClose} isOpenEventAdd={isOpenEventAdd} />
       </div>
     </main>
   );

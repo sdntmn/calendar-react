@@ -1,4 +1,10 @@
 .popup
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--neutral-200);
   margin: 0;
   padding: 0;
   position: absolute;
@@ -13,9 +19,12 @@
   opacity: 0;
 
   &__close-btn
+    padding: 0
+    margin: 0
     position: relative
     display: flex
     flex-direction: row
+    height: 8px
 
   &__container
     padding: 0;
@@ -23,27 +32,24 @@
     flex-direction: column;
     margin: 12px;
 
-  &__close
 
+  &__close
     margin: 0;
     padding: 0;
     border: none;
     transition: 1s;
-
-
     cursor: pointer;
-
 
     &:after
       position: absolute
       z-index: 10;
-      top: 4px;
-      right: 10px;
+      top: -8px;
+      right: 0;
       content: "";
       width: 20px
       height: 20px
-      background: url(../../images/icons_cross-small.svg) no-repeat right;
-    background-size: cover
+      background: url(../../images/icons_cross-small.svg) ;
+
 
 
 .popup__is-opened
