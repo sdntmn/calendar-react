@@ -6,6 +6,7 @@ const Header = ({
   onQuickAdd,
   activeCell,
   isOpenQuickAdd,
+  isOpenEventAdd,
   onEventAdd,
   onClose,
   setSaveResultQuickAdd,
@@ -14,20 +15,48 @@ const Header = ({
   setDate,
   onOpenOverview,
 }) => {
-  const [activeCellBoolean, setActiveCellBoolean] = useState({});
+  const [isButtonAdd, setIsButtonAdd] = useState(true);
+  const [isButtonUpdate, setIsButtonUpdate] = useState(true);
 
-  const activeEventCell = activeCell.title === "";
+  console.log(activeCell);
 
   useEffect(() => {
+    let buttonAdd;
+    let buttonUpdate;
     const activeCellBoolean = () => {
-      if (activeCell.active === undefined) {
-        return false;
-      } else {
-        return true;
+      if (Object.keys(activeCell).length === 0 || activeCell.active === false) {
+        buttonAdd = true;
+        buttonUpdate = true;
+        return [buttonAdd, buttonUpdate];
+      }
+      if (
+        activeCell.active !== undefined &&
+        activeCell.active === true &&
+        activeCell.title === "" &&
+        !isOpenEventAdd &&
+        !isOpenQuickAdd
+      ) {
+        buttonAdd = false;
+        buttonUpdate = true;
+        return [buttonAdd, buttonUpdate];
+      }
+      if (
+        activeCell.active !== undefined &&
+        activeCell.active === true &&
+        activeCell.title !== "" &&
+        !isOpenQuickAdd &&
+        !isOpenEventAdd
+      ) {
+        buttonAdd = false;
+        buttonUpdate = false;
+        return [buttonAdd, buttonUpdate];
       }
     };
-    setActiveCellBoolean(activeCellBoolean());
-  }, [activeCell.active]);
+
+    activeCellBoolean();
+    setIsButtonAdd(buttonAdd);
+    setIsButtonUpdate(buttonUpdate);
+  }, [activeCell, isOpenEventAdd, isOpenQuickAdd]);
 
   return (
     <>
@@ -47,7 +76,7 @@ const Header = ({
                 type='button'
                 className='header__main-button'
                 onClick={onQuickAdd}
-                disabled={!activeCellBoolean}>
+                disabled={isButtonAdd}>
                 Добавить
               </button>
 
@@ -55,7 +84,7 @@ const Header = ({
                 type='button'
                 className='header__main-button'
                 onClick={onOpenOverview}
-                disabled={activeEventCell}>
+                disabled={isButtonUpdate}>
                 Обновить
               </button>
             </div>
