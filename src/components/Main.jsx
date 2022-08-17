@@ -1,6 +1,5 @@
 import React from "react";
 import ControlMonth from "./ControlMonth";
-
 import Table from "./Table";
 
 const Main = ({
@@ -21,6 +20,7 @@ const Main = ({
   setActiveEvent,
   dataForEventAdd,
   saveResultQuickAdd,
+  setArrayCellForName,
   textPlaceholderForEventAdd,
 }) => {
   return (
@@ -42,6 +42,7 @@ const Main = ({
           setActiveEvent={setActiveEvent}
           dataForEventAdd={dataForEventAdd}
           saveResultQuickAdd={saveResultQuickAdd}
+          setArrayCellForName={setArrayCellForName}
           textPlaceholderForEventAdd={textPlaceholderForEventAdd}
         />
       </div>

@@ -3,9 +3,23 @@ import { useEffect } from "react";
 import { useState } from "react";
 import PopupEventAdd from "./PopupEventAdd";
 import PopupOverview from "./PopupOverview";
+import {
+  indexCellTopLeft,
+  indexCellTopRight,
+  indexCellBottomLeft,
+  indexCellBottomRight,
+} from "../data/arrayIndexCell.js";
+
+import {
+  OVERVIEW_BOTTOM_LEFT,
+  OVERVIEW_TOP_LEFT,
+  OVERVIEW_TOP_RIGHT,
+  OVERVIEW_BOTTOM_RIGHT,
+} from "../utils/config.js";
 
 const Cell = ({
   index,
+  array,
   dataRow,
   onClose,
   activeCell,
@@ -17,61 +31,54 @@ const Cell = ({
   setIsSaveEvent,
   dataForEventAdd,
   saveResultQuickAdd,
+  setArrayCellForName,
   textPlaceholderForEventAdd,
 }) => {
   const currentDay = dataRow.data === todayString;
-  const indexTopLeft = [1, 2, 3, 8, 9, 10, 15, 16, 17];
-  const indexTopRight = [4, 5, 6, 7, 11, 12, 13, 14, 18, 19, 20, 21];
-  const indexBottomLeft = [22, 23, 24, 29, 30, 31, 36, 37, 38];
-  const indexBottomRight = [25, 26, 27, 28, 32, 33, 34, 35, 39, 40, 41, 42];
-  //console.log(index);
+
   const activeCellDate = dataRow.active;
   const [activeEvent, setActiveEvent] = useState(false);
   const [indexElement, setIndexElement] = useState();
   const [nameId, setNameId] = useState("");
+  const [isHover, setIsHover] = useState(false);
 
+  // =========================================================================
   function handleClickInActive() {
     onCellActive(dataRow);
     getIndex(index);
   }
 
+  // =========================================================================
   function getIndex(val) {
     setIndexElement(val);
   }
 
-  let sideLeftBottomScreen = indexBottomLeft.includes(indexElement);
-  let sideLeftTopScreen = indexTopLeft.includes(indexElement);
-  let sideRightTopScreen = indexTopRight.includes(indexElement);
-  let sideRightBottomScreen = indexBottomRight.includes(indexElement);
-  let overviewBottomLeft = "overviewBottomLeft";
-  let overviewTopLeft = "overviewTopLeft";
-  let overviewTopRight = "overviewTopRight";
-  let overviewBottomRight = "overviewBottomRight";
+  // =========================================================================
+  let sideLeftBottomScreen = indexCellBottomLeft.includes(indexElement);
+  let sideLeftTopScreen = indexCellTopLeft.includes(indexElement);
+  let sideRightTopScreen = indexCellTopRight.includes(indexElement);
+  let sideRightBottomScreen = indexCellBottomRight.includes(indexElement);
 
   useEffect(() => {
     if (sideLeftBottomScreen) {
-      setNameId(overviewBottomLeft);
+      setNameId(OVERVIEW_BOTTOM_LEFT);
     }
     if (sideLeftTopScreen) {
-      setNameId(overviewTopLeft);
+      setNameId(OVERVIEW_TOP_LEFT);
     }
     if (sideRightTopScreen) {
-      setNameId(overviewTopRight);
+      setNameId(OVERVIEW_TOP_RIGHT);
     }
     if (sideRightBottomScreen) {
-      setNameId(overviewBottomRight);
+      setNameId(OVERVIEW_BOTTOM_RIGHT);
     }
   }, [
-    overviewBottomLeft,
-    overviewBottomRight,
-    overviewTopLeft,
-    overviewTopRight,
     sideLeftBottomScreen,
     sideLeftTopScreen,
     sideRightBottomScreen,
     sideRightTopScreen,
   ]);
-
+  // =========================================================================
   useEffect(() => {
     const activeEventCell = () => {
       if (dataRow.title !== "") {
@@ -81,16 +88,15 @@ const Cell = ({
     activeEventCell();
   }, [dataRow.title]);
 
-  const [isHover, setIsHover] = useState(false);
-
+  // =========================================================================
   const handleMouseEnter = () => {
     setIsHover(true);
   };
-
+  // =========================================================================
   const handleMouseLeave = () => {
     setIsHover(false);
   };
-
+  // =========================================================================
   const boxStyle = {
     background: isHover && activeEvent ? "#27A1FF" : "",
   };
@@ -113,6 +119,7 @@ const Cell = ({
           {activeCellDate ? (
             <>
               <PopupEventAdd
+                array={array}
                 nameId={nameId}
                 onClose={onClose}
                 isOpen={isOpenEventAdd}
@@ -121,13 +128,19 @@ const Cell = ({
                 dataForEventAdd={dataForEventAdd}
                 setIsSaveEvent={setIsSaveEvent}
                 isSaveEvent={isSaveEvent}
+                setArrayCellForName={setArrayCellForName}
               />
               <PopupOverview
+                array={array}
                 nameId={nameId}
                 onClose={onClose}
                 isOpen={isOpenOverview}
                 activeCell={activeCell}
+                isSaveEvent={isSaveEvent}
                 setIsSaveEvent={setIsSaveEvent}
+                setArrayCellForName={setArrayCellForName}
+                setActiveEvent={setActiveEvent}
+                setIsHover={setIsHover}
               />
             </>
           ) : (
@@ -159,6 +172,7 @@ const Cell = ({
           onMouseLeave={handleMouseLeave}>
           {activeCellDate ? (
             <PopupEventAdd
+              array={array}
               nameId={nameId}
               onClose={onClose}
               isOpen={isOpenEventAdd}
@@ -167,6 +181,7 @@ const Cell = ({
               dataForEventAdd={dataForEventAdd}
               setIsSaveEvent={setIsSaveEvent}
               isSaveEvent={isSaveEvent}
+              setArrayCellForName={setArrayCellForName}
             />
           ) : (
             ""

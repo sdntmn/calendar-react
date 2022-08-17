@@ -1,30 +1,33 @@
 import React from "react";
 import Cell from "./Cell";
+import { AMOUNT_CELL, EXTRA_STEP } from "../utils/config.js";
 
 const Table = ({
+  onClose,
   arrayCell,
   activeCell,
-  todayString,
-  onClose,
-  isOpenEventAdd,
-  onCellActive,
-  textPlaceholderForEventAdd,
-  saveResultQuickAdd,
-  dataForEventAdd,
-  setIsSaveEvent,
   isSaveEvent,
+  todayString,
+  onCellActive,
   isOpenOverview,
+  setIsSaveEvent,
+  isOpenEventAdd,
+  dataForEventAdd,
+  saveResultQuickAdd,
+  setArrayCellForName,
+  textPlaceholderForEventAdd,
 }) => {
   return (
     <>
       <section className='table page__section'>
-        {arrayCell.length === 42 &&
-          arrayCell.map((item, index) => (
+        {arrayCell.length === AMOUNT_CELL &&
+          arrayCell.map((item, index, array) => (
             <Cell
               key={item.id}
               dataRow={item}
               onClose={onClose}
-              index={index + 1}
+              index={index + EXTRA_STEP}
+              array={array}
               activeCell={activeCell}
               todayString={todayString}
               isOpenEventAdd={isOpenEventAdd}
@@ -34,7 +37,8 @@ const Table = ({
               dataForEventAdd={dataForEventAdd}
               setIsSaveEvent={setIsSaveEvent}
               isSaveEvent={isSaveEvent}
-              isOpenOverview={isOpenOverview}></Cell>
+              isOpenOverview={isOpenOverview}
+              setArrayCellForName={setArrayCellForName}></Cell>
           ))}
       </section>
     </>

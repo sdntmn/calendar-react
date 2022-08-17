@@ -4,24 +4,28 @@ import InputPopup from "./InputPopup";
 
 import TextAreaInPopup from "./TextAreaInPopup";
 import Button from "./Button";
+import { MILLION } from "../utils/config.js";
 
 const PopupEventAdd = function ({
+  array,
   isOpen,
-  onClose,
-  textPlaceholderForEventAdd,
-  saveResultQuickAdd,
-  dataForEventAdd,
-  setIsSaveEvent,
-  isSaveEvent,
   nameId,
+  onClose,
+  isSaveEvent,
+  setIsSaveEvent,
+  dataForEventAdd,
+  saveResultQuickAdd,
+  setArrayCellForName,
+  textPlaceholderForEventAdd,
 }) {
   const [values, setValues] = useState({});
   const [resultEvent, setResultEvent] = useState({});
 
+  //==========================================================================
   async function handleSubmitSave(evt) {
     evt.preventDefault();
     const result = {
-      id: Math.floor(Math.random() * 1000000),
+      id: Math.floor(Math.random() * MILLION),
       title: values.title || saveResultQuickAdd,
       data: dataForEventAdd,
       participants: values.participants || "",
@@ -33,6 +37,7 @@ const PopupEventAdd = function ({
     onClose();
   }
 
+  //==========================================================================
   const handleChange = (evt) => {
     const input = evt.target;
     const value = input.value;
@@ -40,16 +45,35 @@ const PopupEventAdd = function ({
     setValues({ ...values, [nameInput]: value });
   };
 
+  //==========================================================================
   function addEvent(val) {
-    return setIsSaveEvent([...isSaveEvent, val]);
+    setArrayCellForName(
+      array.map((el) => {
+        if (el.data === val.data) {
+          return (el = {
+            ...el,
+            id: val.id,
+            description: val.description,
+            title: val.title,
+            participants: val.participants,
+          });
+        } else {
+          return el;
+        }
+      })
+    );
+    setIsSaveEvent([...isSaveEvent, val]);
   }
 
+  //==========================================================================
   function resetData() {
     setValues({});
     onClose();
     return true;
   }
 
+  //==========================================================================
+  //компонент InputPopup
   const doingsInput = (
     <InputPopup
       placeholder='Событие'
@@ -60,6 +84,9 @@ const PopupEventAdd = function ({
       className='inputPopup'
     />
   );
+
+  //==========================================================================
+  //компонент InputPopup
   const dateOfDoingsInput = (
     <InputPopup
       placeholder={textPlaceholderForEventAdd}
@@ -72,6 +99,8 @@ const PopupEventAdd = function ({
     />
   );
 
+  //==========================================================================
+  //компонент InputPopup
   const namesParticipantsInput = (
     <InputPopup
       placeholder='Имена участников'
@@ -83,6 +112,8 @@ const PopupEventAdd = function ({
     />
   );
 
+  //==========================================================================
+  //компонент TextAreaInPopup
   const textAreaInput = (
     <TextAreaInPopup
       placeholder='Описание'
@@ -93,6 +124,8 @@ const PopupEventAdd = function ({
     />
   );
 
+  //==========================================================================
+  //компонент Button
   const btnReady = (
     <Button
       className='controlMonth__extra-button popupEventAdd_controlMonth'
@@ -100,6 +133,8 @@ const PopupEventAdd = function ({
       title='Готово'></Button>
   );
 
+  //==========================================================================
+  //компонент Button
   const btnDelete = (
     <Button
       className='controlMonth__extra-button popupEventAdd_controlMonth'

@@ -5,15 +5,16 @@ import InputPopup from "./InputPopup";
 import Button from "./Button";
 
 const PopupQuickAdd = function ({
-  isOpenQuickAdd,
   onClose,
   onEventAdd,
-  setSaveResultQuickAdd,
+  isOpenQuickAdd,
   textForInputQuickAdd,
+  setSaveResultQuickAdd,
 }) {
   const [nameEvent, setNameEvent] = useState();
   const [buttonIsDisabledSave, setButtonIsDisabledSave] = useState(true);
 
+  //======================================================================
   // Обработчик изменения инпута обновляет стейт
   const handlerInputEvent = (evt) => {
     setNameEvent(evt.target.value);
@@ -22,6 +23,7 @@ const PopupQuickAdd = function ({
     }
   };
 
+  //======================================================================
   async function handleSubmitSave(evt) {
     evt.preventDefault();
     onEventAdd();
@@ -29,10 +31,13 @@ const PopupQuickAdd = function ({
     resetFrom();
   }
 
+  //======================================================================
   const resetFrom = useCallback(() => {
     setNameEvent("");
   }, []);
 
+  //======================================================================
+  //компонент InputPopup
   const dateCreateEventInput = (
     <InputPopup
       type='text'
@@ -45,6 +50,8 @@ const PopupQuickAdd = function ({
     />
   );
 
+  //======================================================================
+  //компонент Button
   const btnCreate = (
     <Button
       className='controlMonth__extra-button popupEventAdd_controlMonth'

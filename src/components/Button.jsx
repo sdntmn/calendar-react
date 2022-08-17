@@ -1,11 +1,11 @@
 import { React } from "react";
 
 const Button = function ({
-  className,
   type,
   title,
-  children,
   onClick,
+  children,
+  className,
   disabled = false,
 }) {
   return (

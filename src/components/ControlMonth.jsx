@@ -7,6 +7,7 @@ import {
 } from "../utils/config";
 
 const ControlMonth = ({ month, year, setDate, day }) => {
+  // =========================================================================
   const prevMonth = () => {
     if (month === FIRST_MONTH_FROM_ARRAY) {
       setDate(
@@ -15,7 +16,7 @@ const ControlMonth = ({ month, year, setDate, day }) => {
     }
     setDate(new Date(year, month - STEP_TRANSITION, day));
   };
-
+  // =========================================================================
   const nextMonth = () => {
     if (month === LAST_MONTH_FROM_ARRAY) {
       setDate(
@@ -24,7 +25,7 @@ const ControlMonth = ({ month, year, setDate, day }) => {
     }
     setDate(new Date(year, month + STEP_TRANSITION, day));
   };
-
+  // =========================================================================
   const btnToday = () => {
     setDate(new Date());
   };

@@ -289,23 +289,33 @@ function App() {
 
   //Список events. Первоначальное получение данных из localStorage
   let saveEvent = JSON.parse(localStorage.getItem("saveEvent")) || [];
-  // Сохранение в state
-  const [isSaveEvent, setIsSaveEvent] = useState(saveEvent);
 
+  const [isSaveEvent, setIsSaveEvent] = useState(saveEvent);
+  const [lengthFavoriteId, setLengthFavoriteId] = useState(isSaveEvent?.length);
+
+  console.log(lengthFavoriteId);
+  console.log(isSaveEvent.length);
+  console.log(arrayCellForName);
   // Список событий. Отслеживания изменений и сохранение данных в LocalStorage.
   useEffect(() => {
     localStorage.setItem("saveEvent", JSON.stringify(isSaveEvent));
   }, [isSaveEvent]);
   //========================================================
 
+  useEffect(() => {
+    if (lengthFavoriteId !== isSaveEvent.length) {
+      setArrayCellForName(arrayCellForName);
+    }
+  }, [arrayCellForName, isSaveEvent.length, lengthFavoriteId]);
+  console.log(arrayCellForName);
   // Для первоначальной загрузки и обработки данных из localStorage
   useEffect(() => {
-    const lengthFavoriteId = isSaveEvent?.length;
+    // const lengthFavoriteId = isSaveEvent?.length;
 
     if (lengthFavoriteId !== 0) {
       for (let i = 0; i < lengthFavoriteId; i++) {
         for (let elem of arrayCellForName) {
-          if (elem.data === isSaveEvent[i].data) {
+          if (elem?.data === isSaveEvent[i]?.data) {
             elem["id"] = isSaveEvent[i].id;
             elem["title"] = isSaveEvent[i].title;
             elem["participants"] = isSaveEvent[i].participants;
@@ -315,12 +325,13 @@ function App() {
         }
       }
     }
-  }, [arrayCellForName, arrayCellNextRows, isSaveEvent, isSaveEvent?.length]);
-
-  //   Чтобы добиться корректного сравнения дат, можно использовать метод getTime():
-  //   const equalDate1 = new Date('2022-03-13');
-  // const equalDate2 = new Date('2022-03-13');
-  // console.log(equalDate1.getTime() == equalDate2.getTime()); // true
+  }, [
+    arrayCellForName,
+    arrayCellNextRows,
+    isSaveEvent,
+    isSaveEvent.length,
+    lengthFavoriteId,
+  ]);
 
   //========================================================
   //управление попапами
@@ -428,6 +439,7 @@ function App() {
         onClose={closeAllPopups}
         onCellActive={handleCellInActive}
         setIsSaveEvent={setIsSaveEvent}
+        setArrayCellForName={setArrayCellForName}
       />
     </div>
   );

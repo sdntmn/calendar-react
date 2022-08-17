@@ -7,19 +7,23 @@ const Search = function ({ isSaveEvent, setDate }) {
   const [inputSearch, setInputSearch] = useState("");
   const [inputSearchData, setInputSearchData] = useState("");
 
+  //==========================================================================
   // Обработчик изменения инпута обновляет стейт
   const handleInputSearch = (evt) => {
     setInputSearch(evt.target.value);
   };
 
+  //==========================================================================
   const handlerClickInput = () => {
     setIsOpen(true);
   };
 
+  //==========================================================================
   const resetFrom = useCallback(() => {
     setInputSearch("");
   }, []);
 
+  //==========================================================================
   const filterInputData = useCallback(
     (event) => {
       if (
@@ -37,6 +41,8 @@ const Search = function ({ isSaveEvent, setDate }) {
 
   let resultSearch = isSaveEvent.filter(filterInputData);
 
+  //==========================================================================
+  //компонент InputPopup
   const searchInput = (
     <InputPopup
       className='header__input'

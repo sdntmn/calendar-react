@@ -1,24 +1,24 @@
 import { React } from "react";
 
 const InputPopup = function ({
-  placeholder,
   name,
   type,
-  onChange,
   value,
-  className,
   onClick,
+  onChange,
+  className,
+  placeholder,
 }) {
   return (
     <>
       <input
-        className={className}
-        placeholder={placeholder}
         name={name}
         type={type}
-        onChange={onChange}
         value={value}
         onClick={onClick}
+        onChange={onChange}
+        className={className}
+        placeholder={placeholder}
         autocomplete='off'
       />
     </>
@@ -26,4 +26,3 @@ const InputPopup = function ({
 };
 
 export default InputPopup;
-//  'inputPopup'

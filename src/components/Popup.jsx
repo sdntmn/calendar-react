@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 
 const Popup = function ({
+  name,
   isOpen,
+  idPopup,
   onClose,
   children,
-  name,
-  idPopup,
   onSubmit,
 }) {
+  // =======================================================================
   useEffect(() => {
     if (!isOpen) return;
     const handleEscapeClose = (event) => {
@@ -26,8 +27,8 @@ const Popup = function ({
       <form name={name} className='popup__container' onSubmit={onSubmit}>
         <div className='popup__close-btn'>
           <button
-            className='popup__close'
             type='button'
+            className='popup__close'
             aria-label='Кнопка закрытия формы'
             onClick={onClose}></button>
         </div>

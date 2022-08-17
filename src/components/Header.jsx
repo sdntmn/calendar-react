@@ -3,23 +3,21 @@ import PopupQuickAdd from "./PopupQuickAdd";
 import Search from "./Search";
 
 const Header = ({
+  onClose,
+  setDate,
   onQuickAdd,
   activeCell,
+  onEventAdd,
+  isSaveEvent,
   isOpenQuickAdd,
   isOpenEventAdd,
-  onEventAdd,
-  onClose,
+  onOpenOverview,
   setSaveResultQuickAdd,
   textForInputQuickAdd,
-  isSaveEvent,
-  setDate,
-  onOpenOverview,
 }) => {
   const [isButtonAdd, setIsButtonAdd] = useState(true);
   const [isButtonUpdate, setIsButtonUpdate] = useState(true);
-
-  console.log(activeCell);
-
+  // =========================================================================
   useEffect(() => {
     let buttonAdd;
     let buttonUpdate;
@@ -65,9 +63,9 @@ const Header = ({
           <div className='header__control'>
             <PopupQuickAdd
               onClose={onClose}
-              isOpenQuickAdd={isOpenQuickAdd}
               onEventAdd={onEventAdd}
               activeCell={activeCell}
+              isOpenQuickAdd={isOpenQuickAdd}
               setSaveResultQuickAdd={setSaveResultQuickAdd}
               textForInputQuickAdd={textForInputQuickAdd}
             />
@@ -88,10 +86,8 @@ const Header = ({
                 Обновить
               </button>
             </div>
-
             <div className='header__input-area'>
               <div className='header__icon'></div>
-
               <Search isSaveEvent={isSaveEvent} setDate={setDate} />
             </div>
           </div>
