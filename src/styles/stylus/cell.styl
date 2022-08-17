@@ -1,18 +1,21 @@
 .cell
+  position: relative;
   text-overflow: ellipsis;
   white-space: normal;
-  overflow: hidden;
+  // overflow: hidden;
   border-bottom: 1px solid var(--dark-200);
   border-right: 1px solid var(--dark-200);
   padding: 7.5px
 
+
   &_background
     background: var(--blue-100);
 
-  &:active
+  &__active
     box-shadow: 0px 0px 10px 2px var(--blue-300);
+    z-index: 1
 
-  &:hover
+  &__not-active
     background: var(--neutral-100);
 
 
@@ -39,6 +42,10 @@
     font-size: 14px;
     line-height: 16px;
     color: var(--dark-100);
+
+    &-actual
+      text-shadow: 1px 1px 8px rgb(255, 17, 0);
+
 
   &__title
     color: var(--dark-200);

@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import Popup from "./Popup";
-import InputPopup from "./InputPopup";
-
+//import { useCurrentWidth, useCurrentHeight } from "../hooks/useCurrentWidth.js";
 import TextAreaInPopup from "./TextAreaInPopup";
 import Button from "./Button";
 
-const PopupEventAdd = function ({
+const PopupOverview = function ({
   isOpen,
   onClose,
-  textPlaceholderForEventAdd,
-  saveResultQuickAdd,
-  dataForEventAdd,
+  activeCell,
+
   setIsSaveEvent,
   isSaveEvent,
   nameId,
@@ -21,10 +19,6 @@ const PopupEventAdd = function ({
   async function handleSubmitSave(evt) {
     evt.preventDefault();
     const result = {
-      id: Math.floor(Math.random() * 1000000),
-      title: values.title || saveResultQuickAdd,
-      data: dataForEventAdd,
-      participants: values.participants || "",
       description: values.description || "",
     };
 
@@ -41,7 +35,7 @@ const PopupEventAdd = function ({
   };
 
   function addEvent(val) {
-    return setIsSaveEvent([...isSaveEvent, val]);
+    // return setIsSaveEvent([...activeCell, val]);
   }
 
   function resetData() {
@@ -49,39 +43,6 @@ const PopupEventAdd = function ({
     onClose();
     return true;
   }
-
-  const doingsInput = (
-    <InputPopup
-      placeholder='Событие'
-      type='text'
-      name='title'
-      value={values.title || saveResultQuickAdd}
-      onChange={handleChange}
-      className='inputPopup'
-    />
-  );
-  const dateOfDoingsInput = (
-    <InputPopup
-      placeholder={textPlaceholderForEventAdd}
-      type='text'
-      name='data'
-      value={textPlaceholderForEventAdd}
-      onChange={handleChange}
-      className='inputPopup'
-      disabled='true'
-    />
-  );
-
-  const namesParticipantsInput = (
-    <InputPopup
-      placeholder='Имена участников'
-      type='text'
-      name='participants'
-      value={values.participants}
-      onChange={handleChange}
-      className='inputPopup'
-    />
-  );
 
   const textAreaInput = (
     <TextAreaInPopup
@@ -114,11 +75,20 @@ const PopupEventAdd = function ({
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmitSave}
-      name='event-add'
+      name='overview'
       idPopup={nameId}>
-      {doingsInput}
-      {dateOfDoingsInput}
-      {namesParticipantsInput}
+      <div className='popup-content'>
+        <h2 className='popup-content__title'>{activeCell.title}</h2>
+        <span className='popup-content__date'>{activeCell.data}</span>
+        <span className='popup-content__input-text'>
+          Участники:
+          <br></br>
+          <span className='popup-content__button-title'>
+            {activeCell.participants}
+          </span>
+        </span>
+      </div>
+
       {textAreaInput}
       <div className='popupEventAdd'>
         {btnReady}
@@ -128,4 +98,4 @@ const PopupEventAdd = function ({
   );
 };
 
-export default PopupEventAdd;
+export default PopupOverview;

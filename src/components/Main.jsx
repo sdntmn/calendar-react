@@ -3,32 +3,47 @@ import ControlMonth from "./ControlMonth";
 
 import Table from "./Table";
 
-import PopupEventAdd from "./PopupEventAdd";
-import PopupQuickAdd from "./PopupQuickAdd";
-
 const Main = ({
-  arrayCell,
-  isOpenEventAdd,
-  isOpenQuickAdd,
-  onEventAdd,
-  onClose,
-  month,
-  year,
-  setDate,
   day,
+  year,
+  month,
+  onClose,
+  setDate,
+  arrayCell,
+  activeCell,
+  activeEvent,
+  isSaveEvent,
+  todayString,
+  onCellActive,
+  isOpenEventAdd,
+  isOpenOverview,
+  setIsSaveEvent,
+  setActiveEvent,
+  dataForEventAdd,
+  saveResultQuickAdd,
+  textPlaceholderForEventAdd,
 }) => {
   return (
     <main className='main page__section'>
       <div className='main__section'>
         <ControlMonth month={month} year={year} setDate={setDate} day={day} />
-        <Table arrayCell={arrayCell} />
-
-        <PopupQuickAdd
+        <Table
+          setDate={setDate}
           onClose={onClose}
-          isOpenQuickAdd={isOpenQuickAdd}
-          onEventAdd={onEventAdd}
+          arrayCell={arrayCell}
+          activeCell={activeCell}
+          activeEvent={activeEvent}
+          isSaveEvent={isSaveEvent}
+          todayString={todayString}
+          onCellActive={onCellActive}
+          isOpenEventAdd={isOpenEventAdd}
+          isOpenOverview={isOpenOverview}
+          setIsSaveEvent={setIsSaveEvent}
+          setActiveEvent={setActiveEvent}
+          dataForEventAdd={dataForEventAdd}
+          saveResultQuickAdd={saveResultQuickAdd}
+          textPlaceholderForEventAdd={textPlaceholderForEventAdd}
         />
-        <PopupEventAdd onClose={onClose} isOpenEventAdd={isOpenEventAdd} />
       </div>
     </main>
   );

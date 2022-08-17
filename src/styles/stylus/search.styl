@@ -1,0 +1,114 @@
+.autocomplete
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 4px;
+
+  position: absolute;
+  max-width: 210px;
+  width: 100%;
+  left: 39px;
+  top: 40px;
+
+  z-index: 10;
+  max-height: 307.74px;
+  height: auto;
+  gap: 4px
+  background: #FFFFFF;
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.25));
+
+  &::before
+    top: -10.25px;
+    left: 17px;
+    transform: rotate(90deg);
+    content: "";
+    position: absolute;
+    background: url("../../images/decorate.svg") no-repeat;
+
+
+    width: 24px;
+    height: 24px;
+    z-index: 200;
+
+  &__wrap
+    padding: 0;
+    margin: 6px 4px;
+    height: 100%
+    overflow-y: auto;
+
+  &__search
+    display: block;
+    padding: 0;
+    margin: 0
+    list-style: none;
+    margin-right: 4px
+    margin-block-start: 0;
+
+
+  &__result
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px
+    width: 190px
+
+
+    &:hover
+      background: #27A1FF;
+      color: #FFFFFF;
+
+  &__text-menu-title
+    padding: 0;
+    margin: 0
+    margin: 4px 9px 0;
+    height: 16px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+
+  &__text
+    padding: 0;
+    margin: 0
+    height: 16px;
+    margin: 0 9px 4px;
+
+    /* font-menu-tile */
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+
+
+
+* {
+  scrollbar-width: thin;
+
+}
+
+*::-webkit-scrollbar {
+
+  height: 20px
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  margin-top: 7px;
+  margin-bottom: 7px;
+
+  height: 20px
+  background: inherit;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #C4C4C4;;
+  border-radius: 3px;
+  max-height: 120px
+
+}

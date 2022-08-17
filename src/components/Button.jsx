@@ -1,9 +1,20 @@
 import { React } from "react";
 
-const Button = function ({ className, type, title, children, onEvent }) {
+const Button = function ({
+  className,
+  type,
+  title,
+  children,
+  onClick,
+  disabled = false,
+}) {
   return (
     <>
-      <button className={className} type={type} onClick={onEvent}>
+      <button
+        className={className}
+        type={type}
+        onClick={onClick}
+        disabled={disabled}>
         {children ? (
           children
         ) : (

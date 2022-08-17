@@ -1,0 +1,138 @@
+.popupEventAdd
+  margin: 0
+  padding: 0
+  display: flex
+  flex-direction: row
+  gap: 20px
+
+  &_controlMonth
+    margin-left: 0;
+    margin-top: 8px;
+    width: max-content;
+
+
+.popup-content
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  &__title
+    margin: 0
+    padding: 0
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--dark-200);
+
+  &__date
+    margin: 0
+    padding: 0
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--dark-200);
+
+  &__input-text
+    margin: 0
+    padding: 0
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--dark-100);
+
+  &__button-title
+    margin: 0
+    padding: 0
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--dark-200);
+
+
+#overview
+  bottom: 0;
+  right: 153px;
+  z-index: 100;
+
+  &::before
+    content: "";
+    position: absolute;
+    background: url("../../images/decorate.svg") no-repeat;
+    fill-opacity: 0.5;
+    bottom: 39px;
+    right: -10px
+    width: 24px;
+    height: 24px;
+    transform: rotate(180deg);
+
+#overviewBottomLeft
+  bottom: 0;
+  left: 153px;
+  z-index: 100;
+
+  &::before
+    content: "";
+    position: absolute;
+    background: url("../../images/decorate.svg") no-repeat;
+    fill-opacity: 0.5;
+    bottom: 39px;
+    left: -10px;
+    width: 24px;
+    height: 24px;
+
+#overviewTopLeft
+  top: 0;
+  left: 153px;
+  z-index: 100;
+
+  &::before
+    content: "";
+    position: absolute;
+    background: url("../../images/decorate.svg") no-repeat;
+    fill-opacity: 0.5;
+    top: 9px;
+    left: -10px;
+    width: 24px;
+    height: 24px;
+
+#overviewTopRight
+  top: 0;
+  right: 153px;
+  z-index: 100;
+
+  &::before
+    content: "";
+    position: absolute;
+    background: url("../../images/decorate.svg") no-repeat;
+    fill-opacity: 0.5;
+    top: 9px;
+    right: -10px
+    width: 24px;
+    height: 24px;
+    transform: rotate(180deg);
+
+#overviewBottomRight
+  bottom: 0;
+  right: 153px;
+  z-index: 100;
+
+  &::before
+    content: "";
+    position: absolute;
+    background: url("../../images/decorate.svg") no-repeat;
+    fill-opacity: 0.5;
+    bottom: 39px;
+    right: -10px
+    width: 24px;
+    height: 24px;
+    transform: rotate(180deg);

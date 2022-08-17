@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 
-const Popup = function ({ isOpen, onClose, children, name, idPopup }) {
+const Popup = function ({
+  isOpen,
+  onClose,
+  children,
+  name,
+  idPopup,
+  onSubmit,
+}) {
   useEffect(() => {
     if (!isOpen) return;
     const handleEscapeClose = (event) => {
@@ -14,22 +21,9 @@ const Popup = function ({ isOpen, onClose, children, name, idPopup }) {
     };
   }, [isOpen, onClose]);
 
-  const handleOverlayClose = (event) => {
-    console.log(event.target);
-    console.log(event.currentTarget);
-    if (event.target === event.currentTarget && isOpen) {
-      console.log("open add popup");
-      onClose();
-    }
-  };
-
   return (
-    <div
-      className={`popup ${isOpen && "popup__is-opened"}`}
-      name={name}
-      id={idPopup}
-      onMouseDown={handleOverlayClose}>
-      <form name='popup__form' className='popup__container'>
+    <div className={`popup ${isOpen && "popup__is-opened"}`} id={idPopup}>
+      <form name={name} className='popup__container' onSubmit={onSubmit}>
         <div className='popup__close-btn'>
           <button
             className='popup__close'

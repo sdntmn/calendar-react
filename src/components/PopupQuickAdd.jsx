@@ -1,24 +1,57 @@
-import { React } from "react";
+import React, { useState, useCallback } from "react";
+
 import Popup from "./Popup";
 import InputPopup from "./InputPopup";
-
 import Button from "./Button";
 
-const PopupQuickAdd = function ({ isOpenQuickAdd, onClose, onEventAdd }) {
+const PopupQuickAdd = function ({
+  isOpenQuickAdd,
+  onClose,
+  onEventAdd,
+  setSaveResultQuickAdd,
+  textForInputQuickAdd,
+}) {
+  const [nameEvent, setNameEvent] = useState();
+  const [buttonIsDisabledSave, setButtonIsDisabledSave] = useState(true);
+
+  // Обработчик изменения инпута обновляет стейт
+  const handlerInputEvent = (evt) => {
+    setNameEvent(evt.target.value);
+    if (!nameEvent) {
+      setButtonIsDisabledSave(false);
+    }
+  };
+
+  async function handleSubmitSave(evt) {
+    evt.preventDefault();
+    onEventAdd();
+    setSaveResultQuickAdd(nameEvent);
+    resetFrom();
+  }
+
+  const resetFrom = useCallback(() => {
+    setNameEvent("");
+  }, []);
+
   const dateCreateEventInput = (
     <InputPopup
-      placeholder='День, месяц, год'
-      type='date'
-      name='create-event'
+      type='text'
+      name='quick-add'
+      placeholder={textForInputQuickAdd}
+      onChange={handlerInputEvent}
+      value={nameEvent}
+      className='inputPopup'
+      required
     />
   );
 
   const btnCreate = (
     <Button
       className='controlMonth__extra-button popupEventAdd_controlMonth'
-      type='text'
+      type='submit'
       title='Создать'
-      onEvent={onEventAdd}></Button>
+      disabled={buttonIsDisabledSave}
+      onClick={handleSubmitSave}></Button>
   );
 
   return (
@@ -26,7 +59,8 @@ const PopupQuickAdd = function ({ isOpenQuickAdd, onClose, onEventAdd }) {
       isOpen={isOpenQuickAdd}
       onClose={onClose}
       name='quick-add'
-      idPopup='quick-add'>
+      idPopup='quick-add'
+      onSubmit={handleSubmitSave}>
       {dateCreateEventInput}
 
       <div className='popupEventAdd'>{btnCreate}</div>

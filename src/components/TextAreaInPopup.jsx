@@ -1,14 +1,15 @@
 import { React } from "react";
 
-const TextAreaInPopup = function () {
+const TextAreaInPopup = function ({ name, value, onChange }) {
   return (
     <>
       <textarea
         className='textareaPopup'
-        required
         placeholder='Описание'
-        type='text'
-        name='link'></textarea>
+        type='textarea'
+        value={value}
+        name={name}
+        onChange={onChange}></textarea>
     </>
   );
 };

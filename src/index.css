@@ -2,6 +2,7 @@
 @import url("./styles/css/variables.css");
 
 @import url("./styles/css/app.css");
+@import url("./styles/css/search.css");
 @import url("./styles/css/header.css");
 @import url("./styles/css/cell.css");
 @import url("./styles/css/main.css");
@@ -9,6 +10,7 @@
 @import url("./styles/css/popup.css");
 @import url("./styles/css/popupEventAdd.css");
 @import url("./styles/css/popupQuickAdd.css");
+@import url("./styles/css/popupOverview.css");
 @import url("./styles/css/table.css");
 @import url("./styles/css/inputPopup.css");
 @import url("./styles/css/textAreaInput.css");
