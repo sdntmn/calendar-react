@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import InputPopup from "./InputPopup";
-import UseAutocomplete from "./Autocomplete";
+import Autocomplete from "./Autocomplete";
 
 const Search = function ({ isSaveEvent, setDate }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +63,7 @@ const Search = function ({ isSaveEvent, setDate }) {
           <div className='autocomplete__wrap'>
             <ul className='autocomplete__search'>
               {resultSearch.map((item) => (
-                <UseAutocomplete
+                <Autocomplete
                   key={item.id}
                   item={item}
                   onClick={() => {
@@ -74,7 +74,7 @@ const Search = function ({ isSaveEvent, setDate }) {
                     setTimeout(() => {
                       resetFrom();
                     }, 3000);
-                  }}></UseAutocomplete>
+                  }}></Autocomplete>
               ))}
             </ul>
           </div>

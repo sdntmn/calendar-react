@@ -1,20 +1,18 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import PopupEventAdd from "./PopupEventAdd";
-import PopupOverview from "./PopupOverview";
+import React, { useEffect, useState } from "react";
 import {
-  indexCellTopLeft,
-  indexCellTopRight,
   indexCellBottomLeft,
   indexCellBottomRight,
+  indexCellTopLeft,
+  indexCellTopRight,
 } from "../data/arrayIndexCell.js";
+import PopupEventAdd from "./PopupEventAdd";
+import PopupOverview from "./PopupOverview";
 
 import {
   OVERVIEW_BOTTOM_LEFT,
+  OVERVIEW_BOTTOM_RIGHT,
   OVERVIEW_TOP_LEFT,
   OVERVIEW_TOP_RIGHT,
-  OVERVIEW_BOTTOM_RIGHT,
 } from "../utils/config.js";
 
 const Cell = ({
@@ -139,6 +137,7 @@ const Cell = ({
                 isSaveEvent={isSaveEvent}
                 setIsSaveEvent={setIsSaveEvent}
                 setArrayCellForName={setArrayCellForName}
+                textPlaceholderForEventAdd={textPlaceholderForEventAdd}
                 setActiveEvent={setActiveEvent}
                 setIsHover={setIsHover}
               />

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import Button from "./Button";
 import Popup from "./Popup";
 import TextAreaInPopup from "./TextAreaInPopup";
-import Button from "./Button";
 
 const PopupOverview = function ({
   array,
@@ -14,6 +14,7 @@ const PopupOverview = function ({
   setIsSaveEvent,
   setActiveEvent,
   setArrayCellForName,
+  textPlaceholderForEventAdd,
 }) {
   const [values, setValues] = useState({});
 
@@ -127,7 +128,9 @@ const PopupOverview = function ({
       idPopup={nameId}>
       <div className='popup-content'>
         <h2 className='popup-content__title'>{activeCell.title}</h2>
-        <span className='popup-content__date'>{activeCell.data}</span>
+        <span className='popup-content__date'>
+          {textPlaceholderForEventAdd}
+        </span>
         <span className='popup-content__input-text'>
           Участники:
           <br></br>

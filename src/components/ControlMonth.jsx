@@ -1,9 +1,9 @@
 import React from "react";
 import { arrayMonths } from "../data/arrayMonth";
 import {
-  STEP_TRANSITION,
   FIRST_MONTH_FROM_ARRAY,
   LAST_MONTH_FROM_ARRAY,
+  STEP_TRANSITION,
 } from "../utils/config";
 
 const ControlMonth = ({ month, year, setDate, day }) => {

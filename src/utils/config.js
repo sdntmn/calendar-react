@@ -1,4 +1,4 @@
-//ControlMonth
+//ControlMonth / App
 export const TOTAL_CELL = 42;
 export const ROWS_COUNT = 5;
 export const STEP_TRANSITION = 1;
@@ -15,6 +15,9 @@ export const OVERVIEW_BOTTOM_RIGHT = "overviewBottomRight";
 //PopupEventAdd
 export const MILLION = 1000000;
 
-//Table
+//Table / App
 export const AMOUNT_CELL = 42;
 export const EXTRA_STEP = 1;
+
+// App
+export const SECOND_EXTRA_STEP = 2;

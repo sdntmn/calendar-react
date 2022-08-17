@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Popup from "./Popup";
 import InputPopup from "./InputPopup";
+import Popup from "./Popup";
 
-import TextAreaInPopup from "./TextAreaInPopup";
-import Button from "./Button";
 import { MILLION } from "../utils/config.js";
+import Button from "./Button";
+import TextAreaInPopup from "./TextAreaInPopup";
 
 const PopupEventAdd = function ({
   array,
@@ -18,7 +18,12 @@ const PopupEventAdd = function ({
   setArrayCellForName,
   textPlaceholderForEventAdd,
 }) {
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({
+    title: "",
+    data: "",
+    participants: "",
+    description: "",
+  });
   const [resultEvent, setResultEvent] = useState({});
 
   //==========================================================================
@@ -39,9 +44,8 @@ const PopupEventAdd = function ({
 
   //==========================================================================
   const handleChange = (evt) => {
-    const input = evt.target;
-    const value = input.value;
-    const nameInput = input.name;
+    const value = evt.target.value;
+    const nameInput = evt.target.name;
     setValues({ ...values, [nameInput]: value });
   };
 

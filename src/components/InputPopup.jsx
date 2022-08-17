@@ -19,7 +19,7 @@ const InputPopup = function ({
         onChange={onChange}
         className={className}
         placeholder={placeholder}
-        autocomplete='off'
+        autoComplete='off'
       />
     </>
   );

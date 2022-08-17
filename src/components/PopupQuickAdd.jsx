@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 
-import Popup from "./Popup";
-import InputPopup from "./InputPopup";
 import Button from "./Button";
+import InputPopup from "./InputPopup";
+import Popup from "./Popup";
 
 const PopupQuickAdd = function ({
   onClose,
@@ -11,7 +11,7 @@ const PopupQuickAdd = function ({
   textForInputQuickAdd,
   setSaveResultQuickAdd,
 }) {
-  const [nameEvent, setNameEvent] = useState();
+  const [nameEvent, setNameEvent] = useState("");
   const [buttonIsDisabledSave, setButtonIsDisabledSave] = useState(true);
 
   //======================================================================
@@ -69,7 +69,6 @@ const PopupQuickAdd = function ({
       idPopup='quick-add'
       onSubmit={handleSubmitSave}>
       {dateCreateEventInput}
-
       <div className='popupEventAdd'>{btnCreate}</div>
     </Popup>
   );

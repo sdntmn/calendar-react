@@ -1,4 +1,4 @@
-const UseAutocomplete = function ({ onClick, item }) {
+const Autocomplete = function ({ onClick, item }) {
   return (
     <>
       <li onClick={onClick} className='autocomplete__result'>
@@ -9,4 +9,4 @@ const UseAutocomplete = function ({ onClick, item }) {
   );
 };
 
-export default UseAutocomplete;
+export default Autocomplete;

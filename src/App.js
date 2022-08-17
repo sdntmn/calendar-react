@@ -1,7 +1,12 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { TOTAL_CELL } from "./utils/config.js";
+import React, { useEffect, useMemo, useState } from "react";
 import { arrayInflectMonths } from "../src/data/arrayMonth.js";
 import { arrayDayWeek } from "./data/arrayWeek.js";
+import {
+  TOTAL_CELL,
+  EXTRA_STEP,
+  FIRST_DAY_MONTH,
+  SECOND_EXTRA_STEP,
+} from "./utils/config.js";
 import * as useMethod from "./utils/useMethod.js";
 
 import Header from "./components/Header";
@@ -14,7 +19,7 @@ function App() {
   let currentYear;
 
   currentDay = String(newDate.getDate()).padStart(2, "0");
-  currentMonth = String(newDate.getMonth() + 1).padStart(2, "0");
+  currentMonth = String(newDate.getMonth() + EXTRA_STEP).padStart(2, "0");
   currentYear = newDate.getFullYear();
 
   const [todayString, setTodayString] = useState(
@@ -37,29 +42,61 @@ function App() {
   const [activeCell, setActiveCell] = useState({});
 
   const [firstDaySelectedMount, setFirstDaySelectedMount] = useState(
-    new Date(date?.getFullYear(), date?.getMonth(), 1)
+    new Date(date?.getFullYear(), date?.getMonth(), FIRST_DAY_MONTH)
   );
 
   const [prevMountFirstDay, setPrevMountFirstDay] = useState(
-    new Date(date?.getFullYear(), date?.getMonth() - 1, 1)
+    new Date(
+      date?.getFullYear(),
+      date?.getMonth() - EXTRA_STEP,
+      FIRST_DAY_MONTH
+    )
   );
 
   const [nextMountFirstDay, setNextMountFirstDay] = useState(
-    new Date(date?.getFullYear(), date?.getMonth() + 1, 1)
+    new Date(
+      date?.getFullYear(),
+      date?.getMonth() + EXTRA_STEP,
+      FIRST_DAY_MONTH
+    )
   );
 
   const [nextSecondFirstDay, setNextSecondFirstDay] = useState(
-    new Date(date?.getFullYear(), date?.getMonth() + 2, 1)
+    new Date(
+      date?.getFullYear(),
+      date?.getMonth() + SECOND_EXTRA_STEP,
+      FIRST_DAY_MONTH
+    )
   );
 
   useEffect(() => {
     setDay(date.getDate());
     setMonth(date.getMonth());
     setYear(date.getFullYear());
-    setFirstDaySelectedMount(new Date(date.getFullYear(), date.getMonth(), 1));
-    setPrevMountFirstDay(new Date(date.getFullYear(), date.getMonth() - 1, 1));
-    setNextMountFirstDay(new Date(date.getFullYear(), date.getMonth() + 1, 1));
-    setNextSecondFirstDay(new Date(date.getFullYear(), date.getMonth() + 2, 1));
+    setFirstDaySelectedMount(
+      new Date(date.getFullYear(), date.getMonth(), FIRST_DAY_MONTH)
+    );
+    setPrevMountFirstDay(
+      new Date(
+        date.getFullYear(),
+        date.getMonth() - EXTRA_STEP,
+        FIRST_DAY_MONTH
+      )
+    );
+    setNextMountFirstDay(
+      new Date(
+        date.getFullYear(),
+        date.getMonth() + EXTRA_STEP,
+        FIRST_DAY_MONTH
+      )
+    );
+    setNextSecondFirstDay(
+      new Date(
+        date.getFullYear(),
+        date.getMonth() + SECOND_EXTRA_STEP,
+        FIRST_DAY_MONTH
+      )
+    );
   }, [date]);
 
   //========================================================
@@ -76,7 +113,7 @@ function App() {
         if (firstDayWeek === 0) {
           return (firstDayWeek = 6);
         }
-        return firstDayWeek - 1;
+        return firstDayWeek - EXTRA_STEP;
       };
       setDayWeekStartMonth(getDayWeekStartMonth());
     }
@@ -293,9 +330,6 @@ function App() {
   const [isSaveEvent, setIsSaveEvent] = useState(saveEvent);
   const [lengthFavoriteId, setLengthFavoriteId] = useState(isSaveEvent?.length);
 
-  console.log(lengthFavoriteId);
-  console.log(isSaveEvent.length);
-  console.log(arrayCellForName);
   // Список событий. Отслеживания изменений и сохранение данных в LocalStorage.
   useEffect(() => {
     localStorage.setItem("saveEvent", JSON.stringify(isSaveEvent));
@@ -307,11 +341,9 @@ function App() {
       setArrayCellForName(arrayCellForName);
     }
   }, [arrayCellForName, isSaveEvent.length, lengthFavoriteId]);
-  console.log(arrayCellForName);
+
   // Для первоначальной загрузки и обработки данных из localStorage
   useEffect(() => {
-    // const lengthFavoriteId = isSaveEvent?.length;
-
     if (lengthFavoriteId !== 0) {
       for (let i = 0; i < lengthFavoriteId; i++) {
         for (let elem of arrayCellForName) {
