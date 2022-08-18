@@ -50,10 +50,10 @@ const ControlMonth = ({ month, year, setDate, day }) => {
         </button>
       </div>
       <button
-        className='controlMonth__extra-button'
+        className='controlMonth__extra-button '
         type='button'
         onClick={btnToday}>
-        <span className='controlMonth__button-title'>Сегодня</span>
+        Сегодня
       </button>
     </section>
   );
