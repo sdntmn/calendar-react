@@ -7,6 +7,7 @@ const Search = function ({ isSaveEvent, setDate }) {
   const [inputSearch, setInputSearch] = useState("");
   const [inputSearchData, setInputSearchData] = useState("");
 
+  console.log(isSaveEvent);
   //==========================================================================
   // Обработчик изменения инпута обновляет стейт
   const handleInputSearch = (evt) => {

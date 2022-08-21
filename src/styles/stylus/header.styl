@@ -1,31 +1,23 @@
 .header
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  display: grid;
+  grid-area: header;
+  grid-template-columns: minmax(320px, 1024px)
+  justify-content: center;
   background: var(--neutral-100);
 
-
   &__wrapper
-    max-width: 1024px;
-    margin: 52px auto 0;
-    padding: 0;
-
-
-  &__control
     position: relative;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-content: flex-end
     justify-content: space-between;
-    margin: 0 12px;
+    padding: 0 12px;
+
 
   &__control-buttons
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 10px;
+    gap: 10px
+    padding: 0px 0px 20px;
 
 
   &__main-button
@@ -48,37 +40,26 @@
     &:hover
       background: var(--blue-200);
 
-    &:active
-      background: var(--blue-100);
-
     &:disabled
       background: var(--neutral-200);
 
 
 
   &__input-area
-    position: relative;
-    max-width: 250px;
-    width: 100%
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
+    position: relative;
+    padding: 0px 0px 20px;
     gap: 20px;
 
   &__input
-
     background: var(--light-100)
     border: var(--neutral-200)
     box-shadow: inset 0px 0px 1px 2px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     padding: 6px 6px 6px 12px;
 
-    &:invalid
-      border: 1px solid var(--red-100);
-
-    &:disabled
-      background: var(--neutral-100);
 
     &:focus
       padding: 5px 4px 5px 12px;
@@ -113,6 +94,7 @@
 
   &__iconSearch
     width: 35px;
+
 
 
 

@@ -60,36 +60,34 @@ const Header = ({
     <>
       <header className='header page__section'>
         <div className='header__wrapper'>
-          <div className='header__control'>
-            <PopupQuickAdd
-              onClose={onClose}
-              onEventAdd={onEventAdd}
-              activeCell={activeCell}
-              isOpenQuickAdd={isOpenQuickAdd}
-              setSaveResultQuickAdd={setSaveResultQuickAdd}
-              textForInputQuickAdd={textForInputQuickAdd}
-            />
-            <div className='header__control-buttons'>
-              <button
-                type='button'
-                className='header__main-button'
-                onClick={onQuickAdd}
-                disabled={isButtonAdd}>
-                Добавить
-              </button>
+          <PopupQuickAdd
+            onClose={onClose}
+            onEventAdd={onEventAdd}
+            activeCell={activeCell}
+            isOpenQuickAdd={isOpenQuickAdd}
+            setSaveResultQuickAdd={setSaveResultQuickAdd}
+            textForInputQuickAdd={textForInputQuickAdd}
+          />
+          <div className='header__control-buttons'>
+            <button
+              type='button'
+              className='header__main-button'
+              onClick={onQuickAdd}
+              disabled={isButtonAdd}>
+              Добавить
+            </button>
 
-              <button
-                type='button'
-                className='header__main-button'
-                onClick={onOpenOverview}
-                disabled={isButtonUpdate}>
-                Обновить
-              </button>
-            </div>
-            <div className='header__input-area'>
-              <div className='header__icon'></div>
-              <Search isSaveEvent={isSaveEvent} setDate={setDate} />
-            </div>
+            <button
+              type='button'
+              className='header__main-button'
+              onClick={onOpenOverview}
+              disabled={isButtonUpdate}>
+              Обновить
+            </button>
+          </div>
+          <div className='header__input-area'>
+            <div className='header__icon'></div>
+            <Search isSaveEvent={isSaveEvent} setDate={setDate} />
           </div>
         </div>
       </header>

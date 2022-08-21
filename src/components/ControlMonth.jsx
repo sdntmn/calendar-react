@@ -31,13 +31,13 @@ const ControlMonth = ({ month, year, setDate, day }) => {
   };
 
   return (
-    <section className='controlMonth page__section'>
+    <section className='controlMonth'>
       <div className='controlMonth__button-wrap'>
         <button
           type='button'
           className='controlMonth__button-icon'
           onClick={prevMonth}>
-          <div className='controlMonth__button-icon-arrow app__rotation'></div>
+          <div className='controlMonth__button-icon-arrow controlMonth__button-icon-arrow_rotation'></div>
         </button>
         <span className='controlMonth__text'>
           {arrayMonths[month]} {year}
