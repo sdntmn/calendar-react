@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/calendar-react/static/css/main.1ac28074.css",
-    "main.js": "/calendar-react/static/js/main.541a77bf.js",
+    "main.css": "/calendar-react/static/css/main.05793b8a.css",
+    "main.js": "/calendar-react/static/js/main.4113acfc.js",
     "static/js/787.49a7682c.chunk.js": "/calendar-react/static/js/787.49a7682c.chunk.js",
     "index.html": "/calendar-react/index.html",
     "static/media/icons_cross-small.svg": "/calendar-react/static/media/icons_cross-small.92ca00a6fcbf6c0529aa.svg",
     "static/media/icons_search-large.svg": "/calendar-react/static/media/icons_search-large.6a7ccbd2feed8d28eab2.svg",
     "static/media/icons_arrow-large.svg": "/calendar-react/static/media/icons_arrow-large.57894345f1e8d9cfbb61.svg",
     "static/media/decorate.svg": "/calendar-react/static/media/decorate.e3a1c108a5ffb31be9f8.svg",
-    "main.1ac28074.css.map": "/calendar-react/static/css/main.1ac28074.css.map",
-    "main.541a77bf.js.map": "/calendar-react/static/js/main.541a77bf.js.map",
+    "main.05793b8a.css.map": "/calendar-react/static/css/main.05793b8a.css.map",
+    "main.4113acfc.js.map": "/calendar-react/static/js/main.4113acfc.js.map",
     "787.49a7682c.chunk.js.map": "/calendar-react/static/js/787.49a7682c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ac28074.css",
-    "static/js/main.541a77bf.js"
+    "static/css/main.05793b8a.css",
+    "static/js/main.4113acfc.js"
   ]
 }
