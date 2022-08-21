@@ -342,7 +342,7 @@ function App() {
     }
   }, [arrayCellForName, isSaveEvent.length, lengthFavoriteId]);
 
-  console.log(arrayCellForName);
+
   // Для первоначальной загрузки и обработки данных из localStorage
   useEffect(() => {
     if (lengthFavoriteId !== 0) {
