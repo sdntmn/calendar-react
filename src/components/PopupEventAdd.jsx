@@ -6,18 +6,21 @@ import { MILLION } from "../utils/config.js";
 import Button from "./Button";
 import TextAreaInPopup from "./TextAreaInPopup";
 
-const PopupEventAdd = function ({
-  array,
-  isOpen,
-  nameId,
-  onClose,
-  isSaveEvent,
-  setIsSaveEvent,
-  dataForEventAdd,
-  saveResultQuickAdd,
-  setArrayCellForName,
-  textPlaceholderForEventAdd,
-}) {
+const PopupEventAdd = function ({ nameId, props }) {
+  console.log(nameId);
+  const {
+    isOpenEventAdd,
+    onClose,
+    isSaveEvent,
+    setIsSaveEvent,
+    dataForEventAdd,
+    saveResultQuickAdd,
+    setArrayCellForName,
+    textPlaceholderForEventAdd,
+    arrayCell,
+  } = props;
+  console.log(props);
+
   const [values, setValues] = useState({
     title: "",
     data: "",
@@ -52,7 +55,7 @@ const PopupEventAdd = function ({
   //==========================================================================
   function addEvent(val) {
     setArrayCellForName(
-      array.map((el) => {
+      arrayCell.map((el) => {
         if (el.data === val.data) {
           return (el = {
             ...el,
@@ -150,7 +153,7 @@ const PopupEventAdd = function ({
 
   return (
     <Popup
-      isOpen={isOpen}
+      isOpen={isOpenEventAdd}
       onClose={onClose}
       onSubmit={handleSubmitSave}
       name='event-add'

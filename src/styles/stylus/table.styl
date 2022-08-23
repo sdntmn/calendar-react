@@ -1,10 +1,18 @@
-.table
-  position: relative
-  margin: 0 12px
-  display: grid;
-  grid-template-columns: repeat(7, 1fr)
-  grid-auto-rows: minmax(120px, auto)
-  gap: 0
-  border-top: 1px solid var(--dark-200);
-  border-left: 1px solid var(--dark-200);
+.div
 
+  padding: 0 12px
+
+.table
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--dark-200);
+
+
+.td
+
+  padding: 0
+  margin: 0
+
+  max-width: calc(100px / 7)
+  border-collapse: collapse;
+  border: 1px solid var(--dark-200)

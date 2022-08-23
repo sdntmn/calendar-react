@@ -1,45 +1,17 @@
 import React from "react";
-import Cell from "./Cell";
-import { AMOUNT_CELL, EXTRA_STEP } from "../utils/config.js";
+import TableBody from "./TableBody";
 
-const Table = ({
-  onClose,
-  arrayCell,
-  activeCell,
-  isSaveEvent,
-  todayString,
-  onCellActive,
-  isOpenOverview,
-  setIsSaveEvent,
-  isOpenEventAdd,
-  dataForEventAdd,
-  saveResultQuickAdd,
-  setArrayCellForName,
-  textPlaceholderForEventAdd,
-}) => {
+const Table = ({ props }) => {
+  const arrayRows = [0, 1, 2, 3, 4, 5];
+  const table = arrayRows.map((item, index) => (
+    <TableBody key={item} index={index} props={props}></TableBody>
+  ));
   return (
     <>
-      <section className='table page__section'>
-        {arrayCell.length === AMOUNT_CELL &&
-          arrayCell.map((item, index, array) => (
-            <Cell
-              key={item.id}
-              dataRow={item}
-              onClose={onClose}
-              index={index + EXTRA_STEP}
-              array={array}
-              activeCell={activeCell}
-              todayString={todayString}
-              isOpenEventAdd={isOpenEventAdd}
-              onCellActive={onCellActive}
-              textPlaceholderForEventAdd={textPlaceholderForEventAdd}
-              saveResultQuickAdd={saveResultQuickAdd}
-              dataForEventAdd={dataForEventAdd}
-              setIsSaveEvent={setIsSaveEvent}
-              isSaveEvent={isSaveEvent}
-              isOpenOverview={isOpenOverview}
-              setArrayCellForName={setArrayCellForName}></Cell>
-          ))}
+      <section className='div'>
+        <table className='table'>
+          <tbody className='tbody'>{table}</tbody>
+        </table>
       </section>
     </>
   );

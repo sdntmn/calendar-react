@@ -58,7 +58,7 @@ const Header = ({
 
   return (
     <>
-      <header className='header page__section'>
+      <header className='header'>
         <div className='header__wrapper'>
           <PopupQuickAdd
             onClose={onClose}

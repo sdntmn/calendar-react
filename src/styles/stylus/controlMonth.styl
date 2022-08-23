@@ -1,12 +1,14 @@
 .controlMonth
   display: flex;
   flex-direction: row;
-  margin: 12px;
-  max-height: 48px;
+  padding: 0 12px;
 
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--dark-200);
 
   &__button-wrap
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,8 +29,6 @@
     border: none;
     cursor: pointer;
 
-
-
   &__button-icon-arrow
     padding: 0;
     margin: 0;
@@ -41,10 +41,6 @@
       transform: rotate(-180deg);
 
   &__text
-    font-family: var(--font-family);
-    color: var(--dark-200);
-    font-style: normal;
-    font-weight: 400;
     font-size: 18px;
     line-height: 21px;
 
@@ -60,14 +56,11 @@
     max-width: 59px;
     width: 100%;
     cursor: pointer;
-
     padding: 2px 6px;
-    font-family: var(--font-family)
-    font-style: normal;
-    font-weight: 400;
+
     font-size: 12px;
     line-height: 14px;
-    color: var(--dark-200);
+
 
     &:disabled
       background: var(--light-100);

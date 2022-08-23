@@ -3,19 +3,22 @@ import Button from "./Button";
 import Popup from "./Popup";
 import TextAreaInPopup from "./TextAreaInPopup";
 
-const PopupOverview = function ({
-  array,
-  isOpen,
-  nameId,
-  onClose,
-  activeCell,
-  setIsHover,
-  isSaveEvent,
-  setIsSaveEvent,
-  setActiveEvent,
-  setArrayCellForName,
-  textPlaceholderForEventAdd,
-}) {
+const PopupOverview = function ({ nameId, props }) {
+  const {
+    arrayCell,
+    isOpenOverview,
+
+    onClose,
+    activeCell,
+    setIsHover,
+    isSaveEvent,
+    setIsSaveEvent,
+    setActiveEvent,
+    setArrayCellForName,
+    textPlaceholderForEventAdd,
+  } = props;
+
+  console.log(props);
   const [values, setValues] = useState({});
 
   //========================================================================
@@ -50,7 +53,7 @@ const PopupOverview = function ({
       })
     );
     setArrayCellForName(
-      array.map((el) => {
+      arrayCell.map((el) => {
         if (el.data === val.data) {
           return (el = {
             ...el,
@@ -69,7 +72,7 @@ const PopupOverview = function ({
     evt.preventDefault();
     setIsSaveEvent((state) => state.filter((c) => c.id !== activeCell.id));
     setArrayCellForName(
-      array.map((el) => {
+      arrayCell.map((el) => {
         if (el.id === activeCell.id) {
           return (el = {
             ...el,
@@ -121,7 +124,7 @@ const PopupOverview = function ({
 
   return (
     <Popup
-      isOpen={isOpen}
+      isOpen={isOpenOverview}
       onClose={onClose}
       onSubmit={handleSubmitSave}
       name='overview'

@@ -15,26 +15,12 @@ import {
   OVERVIEW_TOP_RIGHT,
 } from "../utils/config.js";
 
-const Cell = ({
-  index,
-  array,
-  dataRow,
-  onClose,
-  activeCell,
-  todayString,
-  isSaveEvent,
-  onCellActive,
-  isOpenEventAdd,
-  isOpenOverview,
-  setIsSaveEvent,
-  dataForEventAdd,
-  saveResultQuickAdd,
-  setArrayCellForName,
-  textPlaceholderForEventAdd,
-}) => {
-  const currentDay = dataRow.data === todayString;
+const Cell2 = ({ dataRow, props }) => {
+  console.log(props.isOpen);
+  console.log(props);
+  const currentDay = dataRow.data === props.todayString;
 
-  const activeCellDate = dataRow.active;
+  const activeCellDate = dataRow?.active;
   const [activeEvent, setActiveEvent] = useState(false);
   const [indexElement, setIndexElement] = useState();
   const [nameId, setNameId] = useState("");
@@ -42,7 +28,12 @@ const Cell = ({
 
   // =========================================================================
   function handleClickInActive() {
-    onCellActive(dataRow);
+    var val = dataRow.id;
+    var index = props.arrayCell?.findIndex(function (item, i) {
+      return item.id === val;
+    });
+
+    props.onCellActive(dataRow);
     getIndex(index);
   }
 
@@ -51,7 +42,7 @@ const Cell = ({
     setIndexElement(val);
   }
 
-  // =========================================================================
+  // // =========================================================================
   let sideLeftBottomScreen = indexCellBottomLeft.includes(indexElement);
   let sideLeftTopScreen = indexCellTopLeft.includes(indexElement);
   let sideRightTopScreen = indexCellTopRight.includes(indexElement);
@@ -116,49 +107,20 @@ const Cell = ({
           onMouseLeave={handleMouseLeave}>
           {activeCellDate ? (
             <>
-              <PopupEventAdd
-                array={array}
-                nameId={nameId}
-                onClose={onClose}
-                isOpen={isOpenEventAdd}
-                textPlaceholderForEventAdd={textPlaceholderForEventAdd}
-                saveResultQuickAdd={saveResultQuickAdd}
-                dataForEventAdd={dataForEventAdd}
-                setIsSaveEvent={setIsSaveEvent}
-                isSaveEvent={isSaveEvent}
-                setArrayCellForName={setArrayCellForName}
-              />
-              <PopupOverview
-                array={array}
-                nameId={nameId}
-                onClose={onClose}
-                isOpen={isOpenOverview}
-                activeCell={activeCell}
-                isSaveEvent={isSaveEvent}
-                setIsSaveEvent={setIsSaveEvent}
-                setArrayCellForName={setArrayCellForName}
-                textPlaceholderForEventAdd={textPlaceholderForEventAdd}
-                setActiveEvent={setActiveEvent}
-                setIsHover={setIsHover}
-              />
+              <PopupEventAdd nameId={nameId} props={props} />
+              <PopupOverview nameId={nameId} props={props} />
             </>
           ) : (
             ""
           )}
 
-          <div className='cell__wrap'>
-            <span
-              className={`cell__heading ${
-                currentDay && "cell__heading-actual"
-              }`}>
-              {dataRow.name}{" "}
-            </span>
-            <span className='cell__heading cell__title'>{dataRow.title}</span>
-            <span className='cell__heading cell__title'>
-              {dataRow.participants}
-            </span>
-            <span className='cell__heading'>{dataRow.description}</span>
-          </div>
+          <span
+            className={`cell__heading ${currentDay && "cell__heading-actual"}`}>
+            {dataRow.name}{" "}
+          </span>
+          <span className='cell__heading cell__title'>{dataRow.title}</span>
+
+          <span className='cell__description'>{dataRow.description}</span>
         </div>
       ) : (
         <div
@@ -170,39 +132,22 @@ const Cell = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}>
           {activeCellDate ? (
-            <PopupEventAdd
-              array={array}
-              nameId={nameId}
-              onClose={onClose}
-              isOpen={isOpenEventAdd}
-              textPlaceholderForEventAdd={textPlaceholderForEventAdd}
-              saveResultQuickAdd={saveResultQuickAdd}
-              dataForEventAdd={dataForEventAdd}
-              setIsSaveEvent={setIsSaveEvent}
-              isSaveEvent={isSaveEvent}
-              setArrayCellForName={setArrayCellForName}
-            />
+            <PopupEventAdd nameId={nameId} props={props} />
           ) : (
             ""
           )}
 
-          <div className='cell__wrap'>
-            <span
-              className={`cell__heading ${
-                currentDay && "cell__heading-actual"
-              }`}>
-              {dataRow.name}{" "}
-            </span>
-            <span className='cell__heading cell__title'>{dataRow.title}</span>
-            <span className='cell__heading cell__title'>
-              {dataRow.participants}
-            </span>
-            <span className='cell__heading'>{dataRow.description}</span>
-          </div>
+          <span
+            className={`cell__heading ${currentDay && "cell__heading-actual"}`}>
+            {dataRow.name}{" "}
+          </span>
+          <span className='cell__heading cell__title'>{dataRow.title}</span>
+
+          <span className='cell__description'>{dataRow.description}</span>
         </div>
       )}
     </>
   );
 };
 
-export default Cell;
+export default Cell2;

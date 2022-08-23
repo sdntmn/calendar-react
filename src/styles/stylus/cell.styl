@@ -2,9 +2,26 @@
   position: relative;
   text-overflow: ellipsis;
   white-space: normal;
-  border-bottom: 1px solid var(--dark-200);
-  border-right: 1px solid var(--dark-200);
-  padding: 7.5px
+  // border-bottom: 1px solid var(--dark-200);
+  // border-right: 1px solid var(--dark-200);
+  padding: 8px
+
+  display: grid
+  grid-template-rows: 16px 16px 56px
+  grid-template-columns: 100%
+  justify-content: center
+  row-gap: 7px
+
+  font-family: var(--font-family)
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  max-width: 143px
+
+
+
+
 
 
   &_background
@@ -18,36 +35,26 @@
     background: var(--neutral-100);
 
 
-  &__wrap
-    display: grid
-    grid-template-rows: 16px 16px 1fr
-    grid-template-columns: 100%
-    justify-content: center
-    row-gap: 7px
-    padding: 0
-
-
   &__heading
-    margin: 0
-    padding: 0
-    max-height: 56px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    font-family: var(--font-family)
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
     color: var(--dark-100);
+
 
     &-actual
       text-shadow: 1px 1px 8px rgb(255, 17, 0);
 
-
   &__title
     color: var(--dark-200);
+
+
+  &__description
+    color: var(--dark-100);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+
 
 
 
